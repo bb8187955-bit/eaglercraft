@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My GitHub Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f9;
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background: #24292e;
+      color: #fff;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.2rem;
+      background: #2ea44f;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+    a.button:hover {
+      background: #22863a;
+    }
+    footer {
+      margin-top: 3rem;
+      padding: 1rem;
+      background: #e1e4e8;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to My GitHub Page</h1>
+    <p>Hosted with ❤️ using GitHub Pages</p>
+  </header>
+  
+  <main>
+    <h2>Hello!</h2>
+    <p>This is my personal site hosted on GitHub Pages. I’ll be adding more soon.</p>
+    <a class="button" href="https://github.com/YOUR-USERNAME">View my GitHub</a>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Your Name. All rights reserved.
+  </footer>
+
+  <script>
+    // Auto update year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
