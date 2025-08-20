@@ -3,70 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My GitHub Page</title>
+  <title>My GitHub File Host</title>
   <style>
     body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Arial, sans-serif;
       background: #f4f4f9;
       color: #333;
+      padding: 2rem;
+    }
+    h1 {
       text-align: center;
     }
-    header {
-      background: #24292e;
-      color: #fff;
-      padding: 2rem 1rem;
+    ul {
+      list-style: none;
+      padding: 0;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
+    li {
+      margin: 0.5rem 0;
     }
-    main {
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.7rem 1.2rem;
-      background: #2ea44f;
-      color: #fff;
+    a {
       text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background 0.2s ease;
+      color: #0366d6;
     }
-    a.button:hover {
-      background: #22863a;
-    }
-    footer {
-      margin-top: 3rem;
-      padding: 1rem;
-      background: #e1e4e8;
-      font-size: 0.9rem;
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to My GitHub Page</h1>
-    <p>Hosted with ❤️ using GitHub Pages</p>
-  </header>
-  
-  <main>
-    <h2>Hello!</h2>
-    <p>This is my personal site hosted on GitHub Pages. I’ll be adding more soon.</p>
-    <a class="button" href="https://github.com/YOUR-USERNAME">View my GitHub</a>
-  </main>
-
-  <footer>
-    &copy; <span id="year"></span> Your Name. All rights reserved.
-  </footer>
+  <h1>📂 My GitHub Files</h1>
+  <p>This page lists files hosted in this repo.</p>
+  <ul id="file-list">Loading...</ul>
 
   <script>
-    // Auto update year in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // CONFIGURE THIS:
+    const user = "fuzzysigma";   // <-- replace with your GitHub username
+    const repo = "eaglercraft";  // <-- replace with your repo name
+    const branch = "main";          // or "master" depending on your repo
+
+    async function loadFiles() {
+      const res = await fetch(`https://api.github.com/repos/${user}/${repo}/contents/`);
+      const data = await res.json();
+
+      const list = document.getElementById("file-list");
+      list.innerHTML = "";
+
+      data.forEach(file => {
+        if (file.type === "file") {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = `https://${user}.github.io/${repo}/${file.name}`;
+          a.textContent = file.name;
+          li.appendChild(a);
+          list.appendChild(li);
+        }
+      });
+    }
+
+    loadFiles();
   </script>
 </body>
 </html>
